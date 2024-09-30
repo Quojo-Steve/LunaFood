@@ -1,16 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import FirstScreen from "../screens/FirstScreen";
+import Carousel from "../screens/Carousel";
 
 export default StackNav = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="firstPage"
+      initialRouteName="carousel"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen
-        name="firstPage"
-        component={FirstScreen}
+        name="carousel"
+        component={Carousel}
         options={{
           gestureEnabled: false,
           // headerLeft: () => null,

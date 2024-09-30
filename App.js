@@ -1,14 +1,25 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNav from "./navigation/StackNav";
-// import { AuthContextProvider } from "./context/AuthContext";
-// import { vexo } from 'vexo-analytics';
-// vexo("b2670318-fdba-497a-83ee-3b6b327c8c1d")
+import FirstScreen from "./screens/SplashScreen";
 
 export default function App() {
+  const [isSplashScreen, setIsSplashScreen] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsSplashScreen(false);
+    }, 3000);
+  });
+
   return (
-    <NavigationContainer>
-      <StackNav />
-    </NavigationContainer>
+    <>
+      {isSplashScreen ? (
+        <FirstScreen />
+      ) : (
+        <NavigationContainer>
+          <StackNav />
+        </NavigationContainer>
+      )}
+    </>
   );
 }

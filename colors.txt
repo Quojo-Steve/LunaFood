@@ -1,0 +1,2 @@
+color1  = #872c03
+color2 = #eb6f19
