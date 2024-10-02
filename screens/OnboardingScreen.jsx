@@ -13,27 +13,27 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
-const COLORS = { primary: "#282534", white: "#fff" };
+const COLORS = { primary: "#872c03", white: "#eb6f19" };
 
 const slides = [
   {
     id: "1",
-    image: require("../assets/images/image4.png"),
-    title: "Best Digital Solution",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    image: require("../assets/images/image5.png"),
+    title: "All your favorite foods",
+    subtitle: "Order your favorite menu with easy, on-demand delivery ",
   },
   {
     id: "2",
     image: require("../assets/images/image2.png"),
-    title: "Achieve Your Goals",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "Get delivery at your doorstep",
+    subtitle: "Your ready order will be delivered quickly by our courier",
   },
-  {
-    id: "3",
-    image: require("../assets/images/image3.png"),
-    title: "Increase Your Value",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
+  //   {
+  //     id: "3",
+  //     image: require("../assets/images/image3.png"),
+  //     title: "Safe and secure transport",
+  //     subtitle: "",
+  //   },
 ];
 
 const Slide = ({ item }) => {
@@ -41,7 +41,7 @@ const Slide = ({ item }) => {
     <View style={{ alignItems: "center" }}>
       <Image
         source={item?.image}
-        style={{ height: "75%", width, resizeMode: "contain" }}
+        style={{ height: "65%", width, resizeMode: "contain" }}
       />
       <View>
         <Text style={styles.title}>{item?.title}</Text>
@@ -114,9 +114,16 @@ const OnboardingScreen = ({ navigation }) => {
             <View style={{ height: 50 }}>
               <TouchableOpacity
                 style={styles.btn}
-                onPress={() => navigation.navigate("caro")}
+                onPress={() => navigation.navigate("loginPage")}
               >
-                <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: 15,
+                    color: "white",
+                    borderRadius: 10,
+                  }}
+                >
                   GET STARTED
                 </Text>
               </TouchableOpacity>
@@ -155,6 +162,7 @@ const OnboardingScreen = ({ navigation }) => {
                   style={{
                     fontWeight: "bold",
                     fontSize: 15,
+                    color: "white",
                   }}
                 >
                   NEXT
@@ -168,8 +176,14 @@ const OnboardingScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <StatusBar backgroundColor={COLORS.primary} />
+      <View className="w-full flex justify-center items-center mt-2">
+        <Image
+          source={require("../assets/images/luna_2.png")}
+          className="w-28 h-16"
+        />
+      </View>
       <FlatList
         ref={ref}
         onMomentumScrollEnd={updateCurrentSlideIndex}
@@ -189,7 +203,7 @@ const styles = StyleSheet.create({
   subtitle: {
     color: COLORS.white,
     fontSize: 13,
-    marginTop: 10,
+    marginTop: 8,
     maxWidth: "70%",
     textAlign: "center",
     lineHeight: 23,
@@ -198,7 +212,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: 22,
     fontWeight: "bold",
-    marginTop: 20,
+    marginTop: 8,
     textAlign: "center",
   },
   image: {
@@ -217,7 +231,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
     borderRadius: 5,
-    backgroundColor: "#fff",
+    backgroundColor: "#872c03",
     justifyContent: "center",
     alignItems: "center",
   },

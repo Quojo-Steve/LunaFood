@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import OnboardingScreen from "../screens/OnboardingScreen";
-import Carousel from "../screens/Carousel";
+import LoginPage from "../screens/LoginPage";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Ensure AsyncStorage is imported
 
 const Stack = createNativeStackNavigator();
@@ -45,8 +45,8 @@ const StackNav = () => {
         options={{ gestureEnabled: false }}
       />
       <Stack.Screen
-        name="caro"
-        component={Carousel}
+        name="loginPage"
+        component={LoginPage}
         options={{ gestureEnabled: false }}
       />
     </Stack.Navigator>
