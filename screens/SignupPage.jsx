@@ -7,6 +7,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   TextInput,
+  Image,
 } from "react-native";
 
 const SignupPage = ({ navigation }) => {
@@ -16,9 +17,15 @@ const SignupPage = ({ navigation }) => {
       onPress={Keyboard.dismiss}
     >
       <SafeAreaView
-        style={{ marginHorizontal: 20, marginTop: 50 }}
+        style={{ marginHorizontal: 20, marginTop: 30 }}
         className="h-full"
       >
+        <View className="w-full flex justify-center items-center">
+          <Image
+            source={require("../assets/images/luna_2.png")}
+            className="w-28 h-14"
+          />
+        </View>
         <Text className="text-2xl font-bold">Sign Up 😀</Text>
         <Text className="font-medium mb-5 text-xs text-gray-400">
           Create account and choose your favorite menu

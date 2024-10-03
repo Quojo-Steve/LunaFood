@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   TextInput,
   Platform,
+  Image,
 } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
@@ -17,7 +18,13 @@ const LoginPage = ({ navigation }) => {
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
-      <SafeAreaView style={{ marginHorizontal: 20, marginTop: 50 }}>
+      <SafeAreaView style={{ marginHorizontal: 20, marginTop: 30 }}>
+        <View className="w-full flex justify-center items-center">
+          <Image
+            source={require("../assets/images/luna_2.png")}
+            className="w-28 h-14"
+          />
+        </View>
         <Text className="text-2xl font-bold">Welcome Back 👋🏾</Text>
         <Text className="font-medium mb-5 text-xs text-gray-400">
           Sign in to your account
