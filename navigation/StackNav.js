@@ -3,6 +3,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import OnboardingScreen from "../screens/OnboardingScreen";
 import LoginPage from "../screens/LoginPage";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Ensure AsyncStorage is imported
+import SignupPage from "../screens/SignupPage";
+import OtpPage from "../screens/OtpPage";
+import ForgotPassword from "../screens/ForgotPassword";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +52,9 @@ const StackNav = () => {
         component={LoginPage}
         options={{ gestureEnabled: false }}
       />
+      <Stack.Screen name="signupPage" component={SignupPage} />
+      <Stack.Screen name="otpPage" component={OtpPage} />
+      <Stack.Screen name="forgotPassword" component={ForgotPassword} />
     </Stack.Navigator>
   );
 };
