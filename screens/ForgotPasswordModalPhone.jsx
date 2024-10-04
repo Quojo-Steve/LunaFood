@@ -12,24 +12,25 @@ import React, { useState } from "react";
 import ToastManager, { Toast } from "toastify-react-native";
 // import axios from "axios";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ForgotPasswordModal({ visible, onCancel }) {
   const [formStep, setformStep] = useState(1);
-  const [email, setEmail] = useState(null);
+  const [number, setnumber] = useState(null);
   const [loading, setloading] = useState(false);
+  const navigation = useNavigation();
 
   const form1 = () => {
     try {
-      if (!email) {
+      if (!number) {
         setformStep(1);
         setloading(false);
         return Toast.error("Fill all required fields!");
       }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+      if (number.length !== 10) {
         setformStep(1);
         setloading(false);
-        return Toast.error("Enter valid email");
+        return Toast.error("Enter valid number");
       }
       setformStep(2);
     } catch (error) {
@@ -43,7 +44,7 @@ export default function ForgotPasswordModal({ visible, onCancel }) {
   const resetPassword = async () => {
     try {
       // const response = await axios.put(`${Url}/auth/forgotPassword`, {
-      //   email,
+      //   number,
       // });
       setloading(false);
       setformStep(3);
@@ -79,10 +80,10 @@ export default function ForgotPasswordModal({ visible, onCancel }) {
                 <TextInput
                   placeholder="Phone number"
                   style={styles.textInput}
-                  onChangeText={(text) => setEmail(text)}
+                  onChangeText={(text) => setnumber(text)}
                   keyboardType="phone-pad"
                   autoCapitalize="none"
-                  value={email}
+                  value={number}
                 />
               </View>
               <View style={styles.buttonContainer}>
@@ -142,14 +143,16 @@ export default function ForgotPasswordModal({ visible, onCancel }) {
           {formStep === 3 && (
             <View>
               <Text style={styles.finalMessage}>
-                Check email for new credentials
+                Check sms for new credentials
               </Text>
               <View style={styles.buttonContainer}>
                 <TouchableOpacity
                   style={[styles.button, styles.doneButton]}
                   onPress={() => {
                     setformStep(1);
+                    setnumber("");
                     onCancel();
+                    navigation.navigate("changePassword");
                   }}
                 >
                   <Text style={styles.doneButtonText}>Done</Text>

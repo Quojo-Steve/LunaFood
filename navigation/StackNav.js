@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"; // Ensure 
 import SignupPage from "../screens/SignupPage";
 import OtpPage from "../screens/OtpPage";
 import ForgotPassword from "../screens/ForgotPassword";
+import ChangePassword from "../screens/ChangePassword";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,7 @@ const StackNav = () => {
       <Stack.Screen name="signupPage" component={SignupPage} />
       <Stack.Screen name="otpPage" component={OtpPage} />
       <Stack.Screen name="forgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="changePassword" component={ChangePassword} />
     </Stack.Navigator>
   );
 };

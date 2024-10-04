@@ -11,11 +11,13 @@ import {
 import React, { useState } from "react";
 import ToastManager, { Toast } from "toastify-react-native";
 // import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ForgotPasswordModal({ visible, onCancel }) {
   const [formStep, setformStep] = useState(1);
   const [email, setEmail] = useState(null);
   const [loading, setloading] = useState(false);
+  const navigation = useNavigation();
 
   const form1 = () => {
     try {
@@ -147,7 +149,9 @@ export default function ForgotPasswordModal({ visible, onCancel }) {
                   style={[styles.button, styles.doneButton]}
                   onPress={() => {
                     setformStep(1);
+                    setEmail("");
                     onCancel();
+                    navigation.navigate("changePassword");
                   }}
                 >
                   <Text style={styles.doneButtonText}>Done</Text>
