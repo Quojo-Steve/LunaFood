@@ -57,7 +57,7 @@ const ChangePassword = () => {
         <View style={{ height: 50 }}>
           <TouchableOpacity
             style={styles.btn}
-            onPress={() => navigation.navigate("welcome")}
+            onPress={() => navigation.navigate("confetti")}
           >
             <Text
               style={{

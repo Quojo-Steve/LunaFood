@@ -102,17 +102,15 @@ const OtpPage = () => {
           <Text className="font-medium text-gray-400">
             If you didn't receive a code?
           </Text>
-          <Text
-            className="text-[#eb6f19] font-bold ml-1"
-            // onPress={() => navigation.navigate("loginPage")}
-          >
-            Resend
-          </Text>
+          <Text className="text-[#eb6f19] font-bold ml-1">Resend</Text>
         </View>
 
         {/* Continue button */}
         <View style={{ height: 50 }}>
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => navigation.navigate("confetti")}
+          >
             <Text
               style={{
                 fontWeight: "bold",
