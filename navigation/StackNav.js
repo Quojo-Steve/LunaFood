@@ -8,7 +8,8 @@ import OtpPage from "../screens/OtpPage";
 import ForgotPassword from "../screens/ForgotPassword";
 import ChangePassword from "../screens/ChangePassword";
 import Confetti from "../screens/Confetti";
-import HomePage from "../screens/HomePage";
+import HomePage from "../screens/BottomNavPages/HomePage";
+import Tabs from "./Tabs";
 
 const Stack = createNativeStackNavigator();
 
@@ -62,7 +63,7 @@ const StackNav = () => {
       <Stack.Screen name="confetti" component={Confetti} />
       <Stack.Screen
         name="homePage"
-        component={HomePage}
+        component={Tabs}
         options={{ gestureEnabled: false }}
       />
     </Stack.Navigator>
