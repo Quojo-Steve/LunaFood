@@ -24,7 +24,12 @@ const HomePage = () => {
       onPress={Keyboard.dismiss}
     >
       <View style={{ flex: 1 }}>
-        <SafeAreaView style={{ marginHorizontal: 20, marginTop: 30 }}>
+        <SafeAreaView
+          style={{
+            marginHorizontal: 20,
+            marginTop: 30,
+          }}
+        >
           <View className="flex items-center flex-row justify-between">
             <Text className="text-center w-[90%] text-2xl font-bold mb-2">
               Home
@@ -56,6 +61,7 @@ const HomePage = () => {
           <ScrollView
             contentContainerStyle={{ flexGrow: 1 }}
             showsVerticalScrollIndicator={false}
+            className="mb-[100px] mt-2"
           >
             {/* Delivery zone area */}
             <View style={styles.deliveryContainer}>
@@ -84,62 +90,118 @@ const HomePage = () => {
                 </TouchableOpacity>
               </View>
               <Image
-                source={require("../../assets/images/image5.png")}
+                source={require("../../assets/images/teriyaki.png")}
                 className="w-32 h-32"
+                resizeMode="contain"
               />
             </View>
 
             <Text className="font-bold mb-2">Top of Week</Text>
-            <View className="flex flex-row">
-              <View className="mr-4">
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 10 }} // Adds padding around the items
+            >
+              <View className="mr-4 w-32">
                 <Image
-                  source={require("../../assets/images/food.jpeg")}
-                  className="w-28 h-32 rounded-xl mb-2"
+                  source={require("../../assets/images/teriyaki-noodles.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
                 />
                 <View>
-                  <Text className="font-semibold">Fried Pancake</Text>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Chicken Teriyaki Noodles
+                  </Text>
                   <Text className="text-[#eb6f19] text-xs font-semibold">
                     GHC 20.55
                   </Text>
                 </View>
               </View>
-              <View className="mr-4">
+
+              <View className="mr-4 w-32">
                 <Image
-                  source={require("../../assets/images/food.jpeg")}
-                  className="w-28 h-32 rounded-xl mb-2"
+                  source={require("../../assets/images/ampesi.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
                 />
                 <View>
-                  <Text className="font-semibold">Fried Pancake</Text>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Ampesi With Tilpia
+                  </Text>
                   <Text className="text-[#eb6f19] text-xs font-semibold">
                     GHC 20.55
                   </Text>
                 </View>
               </View>
-              <View className="mr-4">
+
+              <View className="mr-4 w-32">
                 <Image
-                  source={require("../../assets/images/food.jpeg")}
-                  className="w-28 h-32 rounded-xl mb-2"
+                  source={require("../../assets/images/kosua.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
                 />
                 <View>
-                  <Text className="font-semibold">Fried Pancake</Text>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Egg and Pepper
+                  </Text>
                   <Text className="text-[#eb6f19] text-xs font-semibold">
                     GHC 20.55
                   </Text>
                 </View>
               </View>
-              <View className="mr-4">
+
+              <View className="mr-4 w-32">
                 <Image
-                  source={require("../../assets/images/food.jpeg")}
-                  className="w-28 h-32 rounded-xl mb-2"
+                  source={require("../../assets/images/jollof.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
                 />
                 <View>
-                  <Text className="font-semibold">Fried Pancake</Text>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Jollof rice with Chicken
+                  </Text>
                   <Text className="text-[#eb6f19] text-xs font-semibold">
                     GHC 20.55
                   </Text>
                 </View>
               </View>
-            </View>
+
+              <View className="mr-4 w-32">
+                <Image
+                  source={require("../../assets/images/waakye.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
+                />
+                <View>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Waakye in leaf
+                  </Text>
+                  <Text className="text-[#eb6f19] text-xs font-semibold">
+                    GHC 20.55
+                  </Text>
+                </View>
+              </View>
+            </ScrollView>
           </ScrollView>
         </SafeAreaView>
       </View>

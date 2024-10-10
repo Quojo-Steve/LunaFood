@@ -18,7 +18,7 @@ const Tabs = ({ navigation }) => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 70,
+          height: 60,
           paddingBottom: 20,
         },
         headerShown: false,
