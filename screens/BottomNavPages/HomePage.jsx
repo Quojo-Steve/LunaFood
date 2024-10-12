@@ -61,7 +61,7 @@ const HomePage = () => {
           </View>
 
           <ScrollView
-            contentContainerStyle={{ flexGrow: 1, paddingBottom: 160 }} // Add bottom padding
+            contentContainerStyle={{ flexGrow: 1, paddingBottom: 170 }} // Add bottom padding
             showsVerticalScrollIndicator={false}
             className="mt-2"
           >

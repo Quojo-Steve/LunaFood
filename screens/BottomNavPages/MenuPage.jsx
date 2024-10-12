@@ -7,13 +7,15 @@ import {
   Keyboard,
   TextInput,
   StatusBar,
+  Image,
   ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import foodData from "../../data"; // Your food data
 
 const MenuPage = () => {
-  const hasNotification = true;
+  const [hasNotification, setHasNotification] = useState(true);
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filters = [
@@ -23,9 +25,14 @@ const MenuPage = () => {
     "New Arrivals",
     "Popular",
     "Trending",
-    "Best Sellers",
     "Seasonal",
   ];
+
+  // Filtered food data based on the selected filter
+  const filteredFoodData =
+    activeFilter === "All"
+      ? foodData
+      : foodData.filter((food) => food.category.includes(activeFilter));
 
   return (
     <View
@@ -96,6 +103,41 @@ const MenuPage = () => {
               </TouchableOpacity>
             ))}
           </ScrollView>
+
+          {/* Scrollable food items area */}
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              paddingHorizontal: 10,
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              paddingBottom: 310,
+            }}
+          >
+            {filteredFoodData.map((food) => (
+              <View key={food.id} className="mr-4 w-[45%] my-4">
+                <Image
+                  // source={{ uri: food.image }}
+                  source={food.image} // Use the image URL from foodData
+                  className="w-full h-44 rounded-xl mb-2"
+                  resizeMode="cover"
+                />
+                <View>
+                  <Text
+                    className="font-semibold text-lg"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    {food.name}
+                  </Text>
+                  <Text className="text-[#eb6f19] text-sm font-bold">
+                    ${food.price.toFixed(2)}
+                  </Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
         </SafeAreaView>
       </View>
     </View>
@@ -133,8 +175,9 @@ const styles = StyleSheet.create({
   filterContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    marginTop: 20,
+    marginVertical: 20,
     paddingHorizontal: 5,
+    height: 50,
   },
   filterButton: {
     paddingVertical: 8,
