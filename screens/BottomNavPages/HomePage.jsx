@@ -5,24 +5,26 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
-  TouchableWithoutFeedback,
   TextInput,
   ScrollView,
   StatusBar,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Carousel from "../../components/Carousel";
 
 const HomePage = () => {
   const hasNotification = true; // Change this flag based on whether there's a notification
+  // const [isRefreshed, setIsRefreshed] = useState(false);
 
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <View style={{ flex: 1 }}>
         <SafeAreaView
           style={{
@@ -59,9 +61,9 @@ const HomePage = () => {
           </View>
 
           <ScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
+            contentContainerStyle={{ flexGrow: 1, paddingBottom: 160 }} // Add bottom padding
             showsVerticalScrollIndicator={false}
-            className="mb-[100px] mt-2"
+            className="mt-2"
           >
             {/* Delivery zone area */}
             <View style={styles.deliveryContainer}>
@@ -79,22 +81,117 @@ const HomePage = () => {
             </View>
 
             {/* Discount banner */}
-            <View className="flex flex-row items-center justify-between bg-gray-200 p-4 mt-2 mb-4 rounded-xl">
-              <View>
-                <Text className="font-bold text-2xl">Chicken Teriyaki</Text>
-                <Text>Discount 25%</Text>
-                <TouchableOpacity className="bg-[#eb6f19] w-32 mt-4 rounded-xl px-4 py-3">
-                  <Text className="text-white font-bold text-center">
-                    Order Now
+            <Carousel />
+
+            <Text className="font-bold mb-2">Top of Week</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{
+                paddingHorizontal: 10,
+                marginBottom: 20,
+              }} // Adds padding around the items
+            >
+              <View className="mr-4 w-32">
+                <Image
+                  source={require("../../assets/images/teriyaki-noodles.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
+                />
+                <View>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Chicken Teriyaki Noodles
                   </Text>
-                </TouchableOpacity>
+                  <Text className="text-[#eb6f19] text-xs font-semibold">
+                    GHC 20.55
+                  </Text>
+                </View>
               </View>
-              <Image
-                source={require("../../assets/images/teriyaki.png")}
-                className="w-32 h-32"
-                resizeMode="contain"
-              />
-            </View>
+
+              <View className="mr-4 w-32">
+                <Image
+                  source={require("../../assets/images/ampesi.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
+                />
+                <View>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Ampesi With Tilpia
+                  </Text>
+                  <Text className="text-[#eb6f19] text-xs font-semibold">
+                    GHC 20.55
+                  </Text>
+                </View>
+              </View>
+
+              <View className="mr-4 w-32">
+                <Image
+                  source={require("../../assets/images/kosua.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
+                />
+                <View>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Egg and Pepper
+                  </Text>
+                  <Text className="text-[#eb6f19] text-xs font-semibold">
+                    GHC 20.55
+                  </Text>
+                </View>
+              </View>
+
+              <View className="mr-4 w-32">
+                <Image
+                  source={require("../../assets/images/jollof.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
+                />
+                <View>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Jollof rice with Chicken
+                  </Text>
+                  <Text className="text-[#eb6f19] text-xs font-semibold">
+                    GHC 20.55
+                  </Text>
+                </View>
+              </View>
+
+              <View className="mr-4 w-32">
+                <Image
+                  source={require("../../assets/images/waakye.jpeg")}
+                  className="w-32 h-32 rounded-xl mb-2"
+                  resizeMode="cover"
+                />
+                <View>
+                  <Text
+                    className="font-semibold"
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    Waakye in leaf
+                  </Text>
+                  <Text className="text-[#eb6f19] text-xs font-semibold">
+                    GHC 20.55
+                  </Text>
+                </View>
+              </View>
+            </ScrollView>
 
             <Text className="font-bold mb-2">Top of Week</Text>
             <ScrollView
@@ -205,7 +302,7 @@ const HomePage = () => {
           </ScrollView>
         </SafeAreaView>
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
-  TouchableWithoutFeedback,
+  StatusBar,
   TextInput,
   Platform,
   Image,
@@ -14,10 +14,12 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 
 const LoginPage = ({ navigation }) => {
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
       <SafeAreaView style={{ marginHorizontal: 20, marginTop: 30 }}>
         <View className="w-full flex justify-center items-center">
           <Image
@@ -98,7 +100,7 @@ const LoginPage = ({ navigation }) => {
           </View>
         )}
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

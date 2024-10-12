@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
-  TouchableWithoutFeedback,
+  StatusBar,
 } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import React from "react";
@@ -16,10 +16,11 @@ const ChangePassword = () => {
   const navigation = useNavigation();
 
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <SafeAreaView style={{ marginHorizontal: 20, marginTop: 50 }}>
         <TouchableOpacity className="w-7 mb-4">
           <AntDesign
@@ -71,7 +72,7 @@ const ChangePassword = () => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

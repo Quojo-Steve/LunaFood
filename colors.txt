@@ -1,2 +1,15 @@
 color1  = #872c03
 color2 = #eb6f19
+
+<View>
+        <Text className="font-bold text-2xl">Chicken Teriyaki</Text>
+        <Text>Discount 25%</Text>
+        <TouchableOpacity className="bg-[#eb6f19] w-32 mt-4 rounded-xl px-4 py-3">
+          <Text className="text-white font-bold text-center">Order Now</Text>
+        </TouchableOpacity>
+      </View>
+      <Image
+        source={require("../assets/images/teriyaki.png")}
+        className="w-32 h-32"
+        resizeMode="contain"
+      />

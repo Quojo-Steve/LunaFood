@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
-  TouchableWithoutFeedback,
+  StatusBar,
   TextInput,
 } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -49,10 +49,12 @@ const OtpPage = () => {
   };
 
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
       <SafeAreaView style={{ marginHorizontal: 20, marginTop: 50 }}>
         {/* Back Arrow */}
         <TouchableOpacity className="w-7">
@@ -123,7 +125,7 @@ const OtpPage = () => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

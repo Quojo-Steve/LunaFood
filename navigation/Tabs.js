@@ -8,20 +8,31 @@ import CartPage from "../screens/BottomNavPages/CartPage";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import ProfilePage from "../screens/BottomNavPages/ProfilePage";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { BlurView } from "expo-blur"; // Import BlurView
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = ({ navigation }) => {
   return (
     <Tab.Navigator
-      initialRouteName="capture"
+      initialRouteName="home"
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 60,
+          borderTopWidth: 0, // Remove top border for a cleaner look
+          position: "absolute", // To make sure the blur doesn't overlap with content
+          backgroundColor: "transparent", // Set background color as transparent to see the blur
           paddingBottom: 20,
         },
         headerShown: false,
+        tabBarBackground: () => (
+          <BlurView
+            intensity={50} // Adjust blur intensity here
+            tint="light" // You can use "dark" for a darker frosted effect
+            style={StyleSheet.absoluteFill}
+          />
+        ),
       }}
     >
       <Tab.Screen
@@ -44,7 +55,7 @@ const Tabs = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 12,
-                  fontWeight: 600,
+                  fontWeight: "600",
                   marginTop: 7,
                   color: focused ? "#eb6f19" : "#7D7B7B",
                 }}
@@ -75,7 +86,7 @@ const Tabs = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 12,
-                  fontWeight: 600,
+                  fontWeight: "600",
                   marginTop: 7,
                   color: focused ? "#eb6f19" : "#7D7B7B",
                 }}
@@ -106,7 +117,7 @@ const Tabs = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 12,
-                  fontWeight: 600,
+                  fontWeight: "600",
                   marginTop: 7,
                   color: focused ? "#eb6f19" : "#7D7B7B",
                 }}
@@ -119,12 +130,6 @@ const Tabs = ({ navigation }) => {
       />
       <Tab.Screen
         name="profilePage"
-        // listeners={{
-        //   tabPress: (e) => {
-        //     e.preventDefault();
-        //     navigation.navigate("login");
-        //   },
-        // }}
         component={ProfilePage}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -143,7 +148,7 @@ const Tabs = ({ navigation }) => {
               <Text
                 style={{
                   fontSize: 12,
-                  fontWeight: 600,
+                  fontWeight: "600",
                   marginTop: 7,
                   color: focused ? "#eb6f19" : "#7D7B7B",
                 }}
@@ -158,17 +163,6 @@ const Tabs = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: "#b9b8b8",
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    elevation: 5,
-  },
-});
-
 export default Tabs;
+
+const styles = StyleSheet.create({});

@@ -177,7 +177,8 @@ const OnboardingScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      <StatusBar backgroundColor={COLORS.primary} />
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
       <View className="w-full flex justify-center items-center mt-2">
         <Image
           source={require("../assets/images/luna_2.png")}

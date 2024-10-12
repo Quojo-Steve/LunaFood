@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
-  TouchableWithoutFeedback,
+  StatusBar,
   Image,
 } from "react-native";
 import React from "react";
@@ -16,10 +16,11 @@ const Confetti = () => {
   const navigation = useNavigation();
 
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <SafeAreaView style={{ marginHorizontal: 20, marginTop: 50 }}>
         <View className="w-full flex items-center justify-center">
           <Image
@@ -52,7 +53,7 @@ const Confetti = () => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

@@ -5,17 +5,19 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
-  TouchableWithoutFeedback,
+  StatusBar,
   TextInput,
   Image,
 } from "react-native";
 
 const SignupPage = ({ navigation }) => {
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
       <SafeAreaView
         style={{ marginHorizontal: 20, marginTop: 30 }}
         className="h-full"
@@ -82,7 +84,7 @@ const SignupPage = ({ navigation }) => {
           </Text>
         </View>
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

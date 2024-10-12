@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
+  StatusBar,
   TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
@@ -21,11 +22,12 @@ const ForgotPassword = () => {
   const navigation = useNavigation();
 
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
-      {/* Wrap the SafeAreaView and ForgotPasswordModal inside a View */}
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
       <View style={{ flex: 1 }}>
         <SafeAreaView style={{ marginHorizontal: 20, marginTop: 50 }}>
           <TouchableOpacity className="w-7 mb-4">
@@ -84,7 +86,7 @@ const ForgotPassword = () => {
           onCancel={() => setisModelOpen2(false)}
         />
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 

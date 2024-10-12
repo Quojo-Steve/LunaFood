@@ -5,23 +5,34 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Keyboard,
-  TouchableWithoutFeedback,
   TextInput,
-  ScrollView,
   StatusBar,
-  Image,
+  ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const MenuPage = () => {
   const hasNotification = true;
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filters = [
+    "All",
+    "Featured",
+    "Top of Week",
+    "New Arrivals",
+    "Popular",
+    "Trending",
+    "Best Sellers",
+    "Seasonal",
+  ];
+
   return (
-    <TouchableWithoutFeedback
+    <View
       style={{ flex: 1, backgroundColor: "#fff" }}
       onPress={Keyboard.dismiss}
     >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <View style={{ flex: 1 }}>
         <SafeAreaView
           style={{
@@ -61,9 +72,33 @@ const MenuPage = () => {
               autoCapitalize="none"
             />
           </View>
+
+          {/* Scrollable filter area */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.filterContainer}
+          >
+            {filters.map((filter) => (
+              <TouchableOpacity
+                key={filter}
+                onPress={() => setActiveFilter(filter)}
+                style={styles.filterButton}
+              >
+                <Text
+                  style={[
+                    styles.filterText,
+                    activeFilter === filter && styles.activeFilterText,
+                  ]}
+                >
+                  {filter}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
         </SafeAreaView>
       </View>
-    </TouchableWithoutFeedback>
+    </View>
   );
 };
 
@@ -95,55 +130,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#333",
   },
-  circleSmall: {
-    position: "absolute",
-    width: 80,
-    height: 80,
-    borderRadius: 50,
-    backgroundColor: "#872c03",
-    opacity: 0.3,
-    bottom: 10,
-    right: 20,
-    zIndex: 9,
-  },
-  deliveryContainer: {
-    marginVertical: 8,
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    borderRadius: 12,
-    backgroundColor: "#eb6f19",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  deliveryHeader: {
+  filterContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: 20,
+    paddingHorizontal: 5,
   },
-  deliveryTitle: {
-    color: "white",
-    fontWeight: "800",
-    fontSize: 18,
-  },
-  deliveryAddress: {
-    color: "white",
-    marginTop: 8,
-    fontSize: 14,
-  },
-  distanceButton: {
-    backgroundColor: "white",
+  filterButton: {
     paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    marginTop: 10,
-    alignItems: "center",
-    zIndex: 10,
+    paddingHorizontal: 10,
+    marginRight: 10,
   },
-  distanceText: {
+  filterText: {
+    fontSize: 16,
+    color: "#999",
+  },
+  activeFilterText: {
     color: "#eb6f19",
-    fontWeight: "700",
+    fontWeight: "bold",
+    fontSize: 20,
+    textDecorationLine: "underline",
   },
 });
