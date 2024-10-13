@@ -1,3 +1,4 @@
+// MenuPage.js
 import {
   StyleSheet,
   Text,
@@ -13,10 +14,13 @@ import {
 import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import foodData from "../../data"; // Your food data
+import FoodDetailsModal from "../FoodDetailsModal"; // Import the modal component
 
 const MenuPage = () => {
   const [hasNotification, setHasNotification] = useState(true);
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const filters = [
     "All",
@@ -33,6 +37,18 @@ const MenuPage = () => {
     activeFilter === "All"
       ? foodData
       : foodData.filter((food) => food.category.includes(activeFilter));
+
+  // Function to open modal with selected food item
+  const openModal = (food) => {
+    setSelectedFood(food);
+    setModalVisible(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setModalVisible(false);
+    setSelectedFood(null);
+  };
 
   return (
     <View
@@ -116,9 +132,12 @@ const MenuPage = () => {
             }}
           >
             {filteredFoodData.map((food) => (
-              <View key={food.id} className="mr-4 w-[45%] my-4">
+              <TouchableOpacity
+                className="mr-4 w-[45%] my-4"
+                key={food.id}
+                onPress={() => openModal(food)} // Open modal on food item press
+              >
                 <Image
-                  // source={{ uri: food.image }}
                   source={food.image} // Use the image URL from foodData
                   className="w-full h-44 rounded-xl mb-2"
                   resizeMode="cover"
@@ -135,10 +154,17 @@ const MenuPage = () => {
                     ${food.price.toFixed(2)}
                   </Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </ScrollView>
         </SafeAreaView>
+
+        {/* Food Details Modal */}
+        <FoodDetailsModal
+          visible={modalVisible}
+          food={selectedFood}
+          onClose={closeModal}
+        />
       </View>
     </View>
   );
