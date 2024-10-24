@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import Optionals from "../components/Optionals";
+import Optional from "../components/Optional";
 
 const FoodDetailsModal = ({ visible, food, onClose }) => {
   if (!food) return null; // If no food item is selected, return null
   const [isFavorite, setIsFavorite] = useState(false);
+  const [choice, setChoice] = useState([]);
 
   const AddToFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -39,7 +39,10 @@ const FoodDetailsModal = ({ visible, food, onClose }) => {
           </TouchableOpacity>
 
           {/* Scrollable content */}
-          <ScrollView contentContainerStyle={styles.scrollableContent}>
+          <ScrollView
+            contentContainerStyle={styles.scrollableContent}
+            showsVerticalScrollIndicator={false}
+          >
             {/* Display food details */}
             <Image
               source={food.image}
@@ -80,7 +83,7 @@ const FoodDetailsModal = ({ visible, food, onClose }) => {
             <View className="flex flex-row w-full items-center">
               {/* Minus Button */}
               <TouchableOpacity className="bg-gray-300 h-8 w-8 rounded-full flex items-center justify-center">
-                <Text className="text-gray-600 text-xl">-</Text>
+                <Text className="text-gray-600 text-xl font-bold">-</Text>
               </TouchableOpacity>
 
               {/* Quantity */}
@@ -93,15 +96,47 @@ const FoodDetailsModal = ({ visible, food, onClose }) => {
 
               {/* Price */}
               <Text className="ml-6 text-lg text-[#eb6f19] font-bold">
-                ${food.price.toFixed(2)}
+                GHC{food.price.toFixed(2)}
               </Text>
             </View>
             <View style={styles.divider}>
               <View style={styles.line} className="bg-gray-200" />
             </View>
             {/* Optionals part */}
-            <Optionals />
+            <Optional
+              title="Sauce"
+              options={[
+                { id: 1, label: "Teriyaki", value: "Teriyaki", price: 2.5 },
+                { id: 2, label: "Ketchup", value: "Ketchup", price: 0.0 },
+                { id: 3, label: "Mayonnaise", value: "Mayonnaise", price: 4.0 },
+              ]}
+              checkedValues={choice}
+              onChange={setChoice}
+              style={{ marginBottom: 15 }}
+            />
+            <Optional
+              title="Add a Topping?"
+              options={[
+                { id: 1, label: "Teriyaki", value: "Teriyaki1", price: 2.5 },
+                { id: 2, label: "Ketchup", value: "Ketchup1", price: 0.0 },
+                {
+                  id: 3,
+                  label: "Mayonnaise",
+                  value: "Mayonnaise3",
+                  price: 4.0,
+                },
+              ]}
+              checkedValues={choice}
+              onChange={setChoice}
+              style={{ marginBottom: 15 }}
+            />
           </ScrollView>
+
+          <TouchableOpacity className="bg-[#eb6f19] p-4 rounded-xl">
+            <Text className="text-white text-center font-bold text-base">
+              Add to cart (GHC 25.89)
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>

@@ -102,6 +102,7 @@ const MenuPage = () => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.filterContainer}
           >
+            {/* TODO: make all page scroll horizontal instead of vertical */}
             {filters.map((filter) => (
               <TouchableOpacity
                 key={filter}
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
     height: 12,
     width: 12,
     borderRadius: 50,
-    backgroundColor: "#872c03",
+    backgroundColor: "#eb6f19",
   },
   searchContainer: {
     flexDirection: "row",

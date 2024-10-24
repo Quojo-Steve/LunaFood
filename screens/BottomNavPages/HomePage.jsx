@@ -14,10 +14,22 @@ import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Carousel from "../../components/Carousel";
+import foodData from "../../data";
+import FoodDetailsModal from "../FoodDetailsModal";
 
 const HomePage = () => {
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
   const hasNotification = true; // Change this flag based on whether there's a notification
   // const [isRefreshed, setIsRefreshed] = useState(false);
+  const openModal = (food) => {
+    setSelectedFood(food);
+    setModalVisible(true);
+  };
+  const closeModal = () => {
+    setModalVisible(false);
+    setSelectedFood(null);
+  };
 
   return (
     <View
@@ -82,8 +94,8 @@ const HomePage = () => {
 
             {/* Discount banner */}
             <Carousel />
-
-            <Text className="font-bold mb-2">Top of Week</Text>
+            {/* TODO: make it alternate between large image and small ones */}
+            <Text className="font-bold mb-2 text-lg">Top of Week</Text>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -92,215 +104,76 @@ const HomePage = () => {
                 marginBottom: 20,
               }} // Adds padding around the items
             >
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/teriyaki-noodles.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Chicken Teriyaki Noodles
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/ampesi.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Ampesi With Tilpia
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/kosua.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Egg and Pepper
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/jollof.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Jollof rice with Chicken
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/waakye.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Waakye in leaf
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
+              {foodData.map((food) => (
+                <TouchableOpacity
+                  onPress={() => openModal(food)}
+                  key={food.id}
+                  className="mr-4 w-32"
+                >
+                  <Image
+                    source={food.image}
+                    className="w-32 h-32 rounded-xl mb-2"
+                    resizeMode="cover"
+                  />
+                  <View>
+                    <Text
+                      className="font-semibold"
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
+                      {food.name}
+                    </Text>
+                    <Text className="text-[#eb6f19] text-xs font-semibold">
+                      GHC {food.price}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
             </ScrollView>
 
-            <Text className="font-bold mb-2">Top of Week</Text>
+            <Text className="font-bold mb-2 text-lg">Sea food</Text>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: 10 }} // Adds padding around the items
+              contentContainerStyle={{
+                paddingHorizontal: 10,
+                marginBottom: 20,
+              }} // Adds padding around the items
             >
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/teriyaki-noodles.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Chicken Teriyaki Noodles
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/ampesi.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Ampesi With Tilpia
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/kosua.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Egg and Pepper
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/jollof.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Jollof rice with Chicken
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
-
-              <View className="mr-4 w-32">
-                <Image
-                  source={require("../../assets/images/waakye.jpeg")}
-                  className="w-32 h-32 rounded-xl mb-2"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text
-                    className="font-semibold"
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                  >
-                    Waakye in leaf
-                  </Text>
-                  <Text className="text-[#eb6f19] text-xs font-semibold">
-                    GHC 20.55
-                  </Text>
-                </View>
-              </View>
+              {foodData.map((food) => (
+                <TouchableOpacity
+                  onPress={() => openModal(food)}
+                  key={food.id}
+                  className="mr-4 w-52"
+                >
+                  <Image
+                    source={food.image}
+                    className="w-full h-52 rounded-xl mb-2"
+                    resizeMode="cover"
+                  />
+                  <View>
+                    <Text
+                      className="font-bold text-lg"
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
+                      {food.name}
+                    </Text>
+                    <Text className="text-[#eb6f19] text-base font-semibold">
+                      GHC {food.price}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
             </ScrollView>
           </ScrollView>
         </SafeAreaView>
+
+        <FoodDetailsModal
+          visible={modalVisible}
+          food={selectedFood}
+          onClose={closeModal}
+        />
       </View>
     </View>
   );
@@ -316,7 +189,7 @@ const styles = StyleSheet.create({
     height: 12,
     width: 12,
     borderRadius: 50,
-    backgroundColor: "#872c03",
+    backgroundColor: "#eb6f19",
   },
   searchContainer: {
     flexDirection: "row",
