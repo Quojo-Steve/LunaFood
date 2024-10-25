@@ -16,6 +16,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Carousel from "../../components/Carousel";
 import foodData from "../../data";
 import FoodDetailsModal from "../FoodDetailsModal";
+import DeliveryZone from "../../components/DeliveryZone";
 
 const HomePage = () => {
   const [selectedFood, setSelectedFood] = useState(null);
@@ -78,19 +79,7 @@ const HomePage = () => {
             className="mt-2"
           >
             {/* Delivery zone area */}
-            <View style={styles.deliveryContainer}>
-              <View style={styles.deliveryHeader}>
-                <Text style={styles.deliveryTitle}>Delivery to Home</Text>
-                <MaterialIcons name="navigate-next" size={30} color="white" />
-              </View>
-              <Text style={styles.deliveryAddress}>
-                Utama Street no.14, Dubai
-              </Text>
-              <View style={styles.circleSmall}></View>
-              <TouchableOpacity style={styles.distanceButton}>
-                <Text style={styles.distanceText}>2.4 km</Text>
-              </TouchableOpacity>
-            </View>
+            <DeliveryZone />
 
             {/* Discount banner */}
             <Carousel />
@@ -144,11 +133,11 @@ const HomePage = () => {
                 <TouchableOpacity
                   onPress={() => openModal(food)}
                   key={food.id}
-                  className="mr-4 w-52"
+                  className="mr-4 w-[210px]"
                 >
                   <Image
                     source={food.image}
-                    className="w-full h-52 rounded-xl mb-2"
+                    className="w-full h-[210px] rounded-xl mb-2"
                     resizeMode="cover"
                   />
                   <View>
@@ -206,56 +195,5 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     color: "#333",
-  },
-  circleSmall: {
-    position: "absolute",
-    width: 80,
-    height: 80,
-    borderRadius: 50,
-    backgroundColor: "#872c03",
-    opacity: 0.3,
-    bottom: 10,
-    right: 20,
-    zIndex: 9,
-  },
-  deliveryContainer: {
-    marginVertical: 8,
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    borderRadius: 12,
-    backgroundColor: "#eb6f19",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  deliveryHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  deliveryTitle: {
-    color: "white",
-    fontWeight: "800",
-    fontSize: 18,
-  },
-  deliveryAddress: {
-    color: "white",
-    marginTop: 8,
-    fontSize: 14,
-  },
-  distanceButton: {
-    backgroundColor: "white",
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    marginTop: 10,
-    alignItems: "center",
-    zIndex: 10,
-  },
-  distanceText: {
-    color: "#eb6f19",
-    fontWeight: "700",
   },
 });
