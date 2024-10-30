@@ -10,7 +10,7 @@ import ChangePassword from "../screens/ChangePassword";
 import Confetti from "../screens/Confetti";
 import HomePage from "../screens/BottomNavPages/HomePage";
 import Tabs from "./Tabs";
-import Location from "../screens/Location";
+import LocationComponent from "../screens/Location";
 
 const Stack = createNativeStackNavigator();
 
@@ -62,7 +62,7 @@ const StackNav = () => {
       <Stack.Screen name="forgotPassword" component={ForgotPassword} />
       <Stack.Screen name="changePassword" component={ChangePassword} />
       <Stack.Screen name="confetti" component={Confetti} />
-      <Stack.Screen name="location" component={Location} />
+      <Stack.Screen name="location" component={LocationComponent} />
       <Stack.Screen
         name="homePage"
         component={Tabs}

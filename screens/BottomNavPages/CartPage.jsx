@@ -35,7 +35,7 @@ const CartPage = () => {
           <Text className="font-bold text-xl">Your Order (3)</Text>
 
           <ScrollView
-            contentContainerStyle={{ flexGrow: 1, paddingBottom: 330 }} // Add bottom padding
+            contentContainerStyle={{ flexGrow: 1, paddingBottom: 285 }} // Add bottom padding
             showsVerticalScrollIndicator={false}
             className="mt-2"
           >
@@ -277,17 +277,12 @@ const CartPage = () => {
                 </View>
               </View>
             </View>
-            {/* <TouchableOpacity className="bg-[#eb6f19] p-4 rounded-xl">
+            <TouchableOpacity className="bg-[#eb6f19] p-4 rounded-xl w-full">
               <Text className="text-white text-center font-bold text-base">
                 Place Order
               </Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </ScrollView>
-          <TouchableOpacity className="bg-[#eb6f19] p-4 rounded-xl absolute bottom-[274px] w-full">
-            <Text className="text-white text-center font-bold text-base">
-              Place Order
-            </Text>
-          </TouchableOpacity>
         </SafeAreaView>
       </View>
     </View>
